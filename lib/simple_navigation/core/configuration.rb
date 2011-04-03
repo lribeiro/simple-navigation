@@ -13,7 +13,7 @@ module SimpleNavigation
 
       # Evals the config_file for the given navigation_context
       def eval_config(navigation_context = :default)
-        SimpleNavigation.context_for_eval.instance_eval(SimpleNavigation.config_files[navigation_context])
+        SimpleNavigation.context_for_eval.instance_eval(SimpleNavigation.config_files[navigation_context], __FILE__, __LINE__)
       end
 
       # Starts processing the configuration
@@ -64,8 +64,8 @@ module SimpleNavigation
     # Returns true if the config_file has already been evaluated.
     def loaded?
       !@primary_navigation.nil?
-    end    
-        
-  end  
-  
+    end
+
+  end
+
 end
